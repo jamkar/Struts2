@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="login">
+            <result>/login.jsp</result>
+            <!-- Interceptors -->
+            <interceptor-ref name="logger"/>
+            <interceptor-ref name="timer"/>
+            <interceptor-ref name="timer"/>
+            <!-- Must declare "defaultStack" interceptors stack if declaring other interceptors-->
+            <interceptor-ref name="defaultStack"/>
+        </action>
+        <action name="validateUser" class="com.mkyong.action.user.LoginAction">
+            <result name="success">/WEB-INF/pages/welcome_user.jsp</result>
+            <result name="input">/login.jsp</result>
+            <!--<result name="error">/WEB-INF/pages/error.jsp</result>-->
+        </action>
+
+        <action name="user" class="com.mkyong.action.user.UserAction">
+            <result name="success">/WEB-INF/pages/user.jsp</result>
+        </action>
+    </package>
+
+</struts>
